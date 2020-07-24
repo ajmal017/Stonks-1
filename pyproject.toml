@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "yahoo_puts"
+version = "0.1.0"
+description = ""
+authors = ["Sean Aye <hello@seanaye.ca>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+yfinance = "^0.1.54"
+lxml = "^4.5.2"
+openpyxl = "^3.0.4"
+streamlit = "^0.63.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+flake8 = "^3.8.3"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
