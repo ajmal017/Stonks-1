@@ -23,6 +23,7 @@ def get_table_download_link(df):
 
 table_type = ['calls', 'puts']
 
+
 stonks = Image.open('media/stonks.jpg')
 st.write('Welcome to Stonks')
 st.image(stonks)
@@ -48,6 +49,25 @@ date = st.sidebar.selectbox(
 cur_frame = get_ticker(cur_ticker, call_put, date)
 
 st.dataframe(cur_frame)
+
+buy_sell: str = st.selectbox(
+    'Buy or sell',
+    ('Buy', 'Sell')
+)
+
+num_contracts = st.number_input('Input Number of Contracts', 1, None, 1)
+
+price = st.number_input(
+    'Input Strike Price',
+    int(min(cur_frame['strike'])),
+    int(max(cur_frame['strike']))
+)
+new_df = cur_frame.loc[cur_frame['strike'] == price]
+try:
+    price = new_df["ask" if buy_sell == "Buy" else "bid"].tolist()[0]
+    st.write(f'You {"pay" if buy_sell == "Buy" else "receive"} {price * num_contracts}')
+except IndexError:
+    st.write('Strike price not found in table')
 
 st.markdown(get_table_download_link(cur_frame), unsafe_allow_html=True)
 
