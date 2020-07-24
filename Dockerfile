@@ -4,20 +4,6 @@ RUN mkdir /app
 
 WORKDIR /app
 
-ENV PYTHONPATH=${PYTHONPATH}:${PWD} 
-
-RUN pip3 install poetry lxml
-
-RUN poetry config virtualenvs.create false
-
-COPY /yahoo_puts /app
-
-COPY pyproject.toml /app 
-
-RUN poetry install --no-dev
-
-COPY ./config.toml ~/.streamlit/
-
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
@@ -32,6 +18,18 @@ RUN bash -c 'echo -e "\
 [server]\n\
 enableCORS = false\n\
 " > /root/.streamlit/config.toml'
+
+ENV PYTHONPATH=${PYTHONPATH}:${PWD} 
+
+RUN pip3 install poetry lxml
+
+RUN poetry config virtualenvs.create false
+
+COPY pyproject.toml /app 
+
+RUN poetry install --no-dev
+
+COPY /yahoo_puts /app
 
 EXPOSE 8501
 
