@@ -1,3 +1,4 @@
+from PIL import Image
 import streamlit as st
 import yfinance as yf
 
@@ -8,15 +9,16 @@ def get_ticker(ticker: str, call_put: str, time: str):
     return chain.calls if call_put == 'calls' else chain.puts
 
 
-stocks = ['TSLA', 'JWN', 'AAPL']
 table_type = ['calls', 'puts']
 
-st.write('Hello World')
+stonks = Image.open('media/stonks.jpg')
+st.write('Welcome to Stonks')
+st.image(stonks)
 
-ticker = st.sidebar.selectbox(
-    'Pick a ticker',
-    stocks
-)
+
+ticker: str = st.sidebar.text_input('Type a ticker symbol', 'TSLA')
+
+ticker.upper()
 
 call_put = st.sidebar.selectbox(
     'Choose a type',
