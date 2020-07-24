@@ -16,4 +16,6 @@ COPY pyproject.toml /app
 
 RUN poetry install --no-dev
 
-CMD ["streamlit", "run", "/app/yahoo_puts/dashboard.py"]
+COPY ./config.toml ~/.streamlit/
+
+CMD ["streamlit", "run", "/app/dashboard.py"]
