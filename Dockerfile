@@ -29,7 +29,7 @@ COPY pyproject.toml /app
 
 RUN poetry install --no-dev
 
-COPY /yahoo_puts /app
+COPY /stonks /app
 
 EXPOSE 8501
 

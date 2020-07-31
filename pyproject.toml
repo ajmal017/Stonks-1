@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "yahoo_puts"
+name = "stonks"
 version = "0.1.0"
 description = ""
 authors = ["Sean Aye <hello@seanaye.ca>"]

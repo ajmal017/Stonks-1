@@ -1,4 +1,4 @@
-from yahoo_puts import __version__
+from stonks import __version__
 
 
 def test_version():

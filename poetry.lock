@@ -1151,7 +1151,7 @@ notebook = ">=4.4.1"
 
 [[package]]
 category = "main"
-description = "Yahoo! Finance market data downloader"
+description = "Stonks is money"
 name = "yfinance"
 optional = false
 python-versions = "*"
