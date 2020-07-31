@@ -150,6 +150,7 @@ def get_strike_prices_range(call: int, put: int):
     return range(0, ceil(overall * 1.5), 100)
 
 
+@sr.cache
 def calcuate_value(this_price: int, trade: Trade, call: pd.DataFrame, put: pd.DataFrame):
     if trade.trade_type == TradeType.call:
         if trade.buy_sell == BuySell.buy:
