@@ -129,8 +129,8 @@ for i in range(num_trades):
     try:
         # tmp = acc[i - 1]['buy_sell']
         bid_ask = "ask" if buy_sell == BuySell.buy else "bid"
-        premium = this_trade.loc[this_trade['strike'] == strike, bid_ask].values[0]
-        st.write(f'You {"pay" if buy_sell == BuySell.buy else "receive"} {premium * num_contracts}')
+        premium = this_trade.loc[this_trade['strike'] == strike, bid_ask].values[0] * num_contracts
+        st.write(f'You {"pay" if buy_sell == BuySell.buy else "receive"} {premium}')
 
         # cache data to list of trades
         trades.append(Trade(call_put, buy_sell, num_contracts, strike, premium))
@@ -174,4 +174,3 @@ chart_data = pd.DataFrame(
     index=strike_price_range
 )
 st.line_chart(chart_data)
-
